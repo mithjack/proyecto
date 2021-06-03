@@ -1,0 +1,44 @@
+@import "./variables";
+
+// TITULO PRINCIPAL
+h2 {
+    color: $blanco;
+    margin: 1% 0% 2%;
+    text-shadow: 2px 1px $rojo;
+}
+
+@media screen and (max-width: 992px) {
+  h2 {
+    color: $blanco;
+    margin: 2% 0%;
+    text-shadow: 1px .5px $rojo;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  h2 {
+    font-size: larger;
+    text-align: center;
+  }
+}
+
+.datos{
+  background-color: $grisLum;
+  border-radius: 5px;
+  margin: 2%;
+  font-weight: bold;
+}
+
+.barra{
+  border-top-left-radius: 5px;
+  border: solid 10px $rojo;
+}
+
+.barra2{
+  border-bottom-left-radius: 5px;
+  border: solid 10px $rojo;
+}
+
+.motto{
+  color:whitesmoke;
+}

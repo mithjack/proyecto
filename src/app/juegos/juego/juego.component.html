@@ -1,0 +1,31 @@
+<div>
+    <div *ngFor="let juegos of juego">
+        <div *ngIf="ID.id==juegos.id">
+            <div *ngIf="juegos.tipo=='RE'; else AC">
+                <div>
+                    <a routerLink="/vista-juegos/RE">
+                        <img src="./../../../assets/img/juegos/back.png" alt="volver" />
+                        Volver a Juegos Retro
+                    </a>
+                </div>
+            </div>
+
+        <ng-template #AC>
+            <div>
+                <a routerLink="/vista-juegos">
+                    <img src="./../../../assets/img/juegos/back.png" alt="volver" />
+                    Volver a Juegos
+                </a>
+            </div>
+        </ng-template>
+
+        <h2>DIVIERTETE CON: {{juegos.titulo}}</h2>
+        <div>
+            <iframe [src]='juegos.ruta | safe2'
+            frameborder="no" allowfullscreen webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"
+            style="overflow-y: hidden; width: 900px; height: 640px; border: 0; text-align: center; padding: 0;">
+            </iframe>
+        </div>
+    </div>
+
+</div>
