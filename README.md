@@ -22,12 +22,33 @@ En el component:
 ->Primero declararemos las variables:  "catalogo: Catalogo;" y  "categoria: Categorias;"  Estas seran el modelo que usaremos para los datos de la api, filtro: {clase: string}; este será los datos que filtraremos para los resultados de la tienda.
 
 -> Para poder utilizar los imports en el fichero, deberemos llamarlos en el constructor (este paso lo realizaremos siempre que importemos algun componente en cualquiera de los ficheros que realizemos)
+
 private servicioTienda: TiendaService -> Este será el que realice las llamadas al servicio externo.
+
 private rutaActiva: ActivatedRoute, -> Este extraerá los datos que le mandemos por parametro.
+
 private router:Router, -> Este nos permitirá navegar a otras paginas desde dentro del componente.
+
 private dataSharingService: DataSharingService -> Nos servirá para realizar los BehaviorSubject.
 
 ->El contenido pues es OnInit, cargaremos todos los datos (en las páginas que importemos datos de arranque utilizaremos esta funcion) que nos cargara los productos, las categorias y el filtro de la tienda (en caso de haberlo mandado) y se suscribirá a estos;  luego llamaremos al servicio getUserLog, el cual nos dará la información del usuario en caso de que este haya iniciado sesión.
 
-##
+## Vista-producto 
+
+HTML:
+
+Nada más abrir el primer div, creamos un ngFor que recorra el catalogo y un ngIf que nos filtre solo al producto seleccionado de la tienda.
+
+Para evitar que se nos puedan colar en algun articulo que aun no hayamos puesto a la venta, dentro del main crearemos *ngIf="producto.disponible; else no" con esto, si el articulo seleccionado NO está disponible, pasaremos al ng-template #no que nos mostrará un error de que no existe el producto elegido y nos dará un boton para volver a la tienda.
+
+La vista será dentro de un grid, a la izquierda insertaremos la imagen y a la derecha introduciremos los datos.
+Si el producto tiene algun estado le añadiremos una etiqueta encima en función del estado (si es 1 que seria nuevo, insertaremos un pequero simbolito que ponga NEW).
+
+Para mostrar los precios con IVA, hemos creado esta función {{producto.precio--((producto.precio *producto.IVA)/100) | number: '1.0-2'}} que nos calculará el iva y el pipe nos mostrará el resultado como un numero con 0 a 2 decimales.
+
+Si el stock del articulo no es 0, crearemos un [(ngModel)]="cantidad_articulos" que nos permitirá pasar el valor que introduzcamos al component para poder realizar las gestiones que hagan falta. Gracias a este ngModel, podemos desactivar el boton de enviar si no cumple los requisitos minimos [disabled]="cantidad_articulos<1||cantidad_articulos>producto.stock" (que no haya stock o que los articulos sean más que los que hay en stock).
+
+
+En el component:
+
 
