@@ -65,4 +65,18 @@ Una función se encargará de recalcular el precio total del contenido del carro
 
 -> goBack simplemente nos hace un router de nuevo a la Tienda.
 
-##
+## Carrito
+
+HTML:
+
+
+En el component:
+
+## Facturas
+
+HTML:
+
+
+En el component:
+
+## Cambios realizados globalmenet
