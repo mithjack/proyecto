@@ -1,6 +1,10 @@
-# ProyectoInitialG
+# Proyecto de expansión de InitialG, Modulo Tienda
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
+
+Vamos a explicar los componentes que componen el codigo de la tienda, para poder entender el codigo.
+
+El modulo se encuentra en /src/app/tienda
 
 ## Tienda
 
@@ -51,4 +55,14 @@ Si el stock del articulo no es 0, crearemos un [(ngModel)]="cantidad_articulos" 
 
 En el component:
 
+-> Al igual que en otros ficheros component, importaremos los modelos que usaremos en la gestion de datos de la API, el fichero de servicios, la ruta activa para recibir datos y el datasarhe para e behavior subject.
 
+-> Inicialmente como en la mayoria, llamaremos a cargarTodo() en el OnInit, para que nos cargue los datos de la página. Luego asignaremos 1 al valor de cantidad_articulos (cambiará si le asignamos otra cantidad en la vista del producto) y la función par cargar el usuario local si estaba ya logueado.
+
+-> Cuando añadamos algun producto al carrito, llamaremos a addToCart(producto) donde le pasaremos al servicio con el mismo nombre el producto y la cantidad de articulos; el servicio buscará en el carro si el articulo está dentro, añadiendolo en el caso de no encontrarlo o modificandolo si ya se encontraba dentro.
+Luego guardará el carro en un BS y tambien almacenaremos localmente el carro. 
+Una función se encargará de recalcular el precio total del contenido del carro y actualizar el BS de este.
+
+-> goBack simplemente nos hace un router de nuevo a la Tienda.
+
+##
